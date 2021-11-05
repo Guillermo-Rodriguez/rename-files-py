@@ -14,7 +14,7 @@ def main():
         nombre_nuevo = f"{nombre}{ext}"
         os.rename(archivo, nombre_nuevo)
         time.sleep(0.500)
-        print("#", end='')
+        print("#", end="")
     print("--Archivos renombrados con exito--")    
 
      
