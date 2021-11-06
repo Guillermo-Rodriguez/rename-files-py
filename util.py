@@ -1,13 +1,13 @@
 '''
-Funcion para limpiar los caracteres tildes en un string
-dado comomparametro 
+Función para limpiar tildes en una cadena
+dado como parámetro 
 '''
 def quitar_tildes(nombre):
     reemplazar = (
-        ("á" , "a")
-        ("é" , "e")
-        ("í" , "i")
-        ("ó" , "o")
+        ("á" , "a"),
+        ("é" , "e"),
+        ("í" , "i"),
+        ("ó" , "o"),
         ("ú" , "u")
     )
 
