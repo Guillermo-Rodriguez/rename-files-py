@@ -1,6 +1,7 @@
 import os
 import util
 import time
+import unicodedata
 
 def main():
     print("--Eliminar caracteres especiales en los archivos de un directorio--")
@@ -9,17 +10,18 @@ def main():
     os.chdir(directorio)
     archivos = os.listdir(directorio)
     total_archivos = len(archivos)
-    archivo_actual = 0
+    archivo_actual = 1
     for archivo in archivos:
-        nombre_nuevo = nombre_nuevo(archivo)
+        nombre_nuevo = gen_nombre_nuevo(archivo)
         os.rename(archivo, nombre_nuevo)
-        time.sleep(0.400)
+        time.sleep(0.100)
+        fin_de_linea = "\n" if archivo_actual == total_archivos else "\r" 
+        print(f"{archivo_actual} de {total_archivos} archivos renombrados con éxito", end=fin_de_linea)  
         archivo_actual += 1
-        print(f"{archivo_actual} de {total_archivos} archivos renombrados con éxito", end="\r")  
-    print(f"{archivo_actual} de {total_archivos} archivos renombrados con éxito") 
 
-def nombre_nuevo(archivo):
+def gen_nombre_nuevo(archivo):
     nombre, ext = os.path.splitext(archivo)
+    nombre = unicodedata.normalize(u'NFKD', nombre).encode('ascii', 'ignore').decode('utf8')
     nombre = util.quitar_tildes(nombre)
     nombre_nuevo = f"{nombre}{ext}"
     return nombre_nuevo 
@@ -27,3 +29,4 @@ def nombre_nuevo(archivo):
      
 if __name__ == "__main__":
     main()
+

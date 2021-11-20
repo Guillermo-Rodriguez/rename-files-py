@@ -8,9 +8,18 @@ def quitar_tildes(nombre):
         ("é" , "e"),
         ("í" , "i"),
         ("ó" , "o"),
-        ("ú" , "u")
+        ("ú" , "u"),
+        ("Á" , "A"),
+        ("É" , "E"),
+        ("Í" , "I"),
+        ("Ó" , "O"),
+        ("Ú" , "U"),
+        ("ñ" , "n"),
+        ("Ñ" , "N"),
+        ("_" , "-"),
+        (" " , "-")
     )
 
     for a, b in reemplazar:
-        nombre = nombre.replace(a, b).replace(a.upper(), b.upper())
+        nombre = nombre.replace(a, b)
     return nombre  
